@@ -10,6 +10,7 @@
     flex-direction: row;
     width: 80%;
     align-self: center;
+
 }
 
 .grid {
@@ -86,4 +87,11 @@
   height: 20px;
   top: 5px;
   margin-right: 8px;
+}
+
+/* :::de Juan::: */
+nav ul li a{
+    
+    color:black;
+ 
 }
