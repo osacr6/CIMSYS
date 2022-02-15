@@ -1,5 +1,56 @@
 /* CONTAINERS */
 
+.cimsysIndex{
+    
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/AmazonSmart.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+    position: relative;
+
+}
+
+.sectionIndex{
+ 
+    margin: 0;
+    padding-top: 1px;
+    box-sizing: border-box;
+    font-family:'Festive', cursive;
+    color: orange;
+    text-align: center;
+    font-size: 30px;
+
+}
+
+.warningMessage{
+    margin: 5px;
+    padding: 5px;
+    box-sizing: content-box;
+    background: transparent;
+    font-family:'Barlow', sans-serif;
+    text-align: center;
+    /*position: bottom;*/
+    color: white;
+    
+    
+}
+
+.signInLink{
+    
+    font-family: 'Barlow', sans-serif;
+    text-decoration: blue;
+    color: white;
+
+}
+
+.signInLink:hover{
+    text-decoration:underline;
+}   
+
 .main-container {
     display: flex;
     flex-direction: column;
