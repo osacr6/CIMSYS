@@ -1,4 +1,5 @@
 # CIMSYS
+Sistema de gestión de casos de investigaciones de cumplimiento
 
 ## Proyecto es un Manejador de revisiones
 
