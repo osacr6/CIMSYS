@@ -1,0 +1,14 @@
+Juan:
+index
+Management
+pagina persona
+
+Frarlen:
+login
+pagina de tiquete
+
+Daniel:
+stage
+suport
+faq
+
