@@ -1,25 +1,9 @@
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:'Festive', cursive;
-}
-
-body {
-    margin:0;
-    padding:0;
-    background:white;
-    height:100vh;
-    overflow:hidden;
-}
-
 .loginForm {
     position:absolute;
     top:50%;
     left:50%;
-    width:400px;
-    background-image: url(../images/AmazonA.jpg);
+    width:500px;
     background-position: center;
     background-size: cover;
     padding-left: 1%;
@@ -29,36 +13,22 @@ body {
     transform:translate(-50%, -50%);
 }
 
-.loginForm h1{
-    text-align: right;
+.loginForm-title {
+    text-align: center;
     padding:20px 0;
     border-bottom:1px solid silver;
     color:#EF7F1A;
 }
 
-.loginForm form{
-    padding:0 40px;
-    
-}
-
-.logo-image {
-    background-position: initial;
-    background-size: 20% 30%;
-    padding-left: 5%;
-    padding-right: 5%;
-    box-sizing: border-box;
-    position: relative;
-}
-
-.logo {
-    
-}
-
-.singup_link{
+.loginForm form {
+    padding: 20px 40px;
     color: #EF7F1A;
-    
 }
 
-.txt_field{
-    color: #EF7F1A;
+.loginForm button {
+    margin: 20px 0;
+}
+
+.loginForm a {
+    padding-right: 10px;
 }

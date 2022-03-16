@@ -10,7 +10,7 @@
     position: relative;
 }
 
-.sectionIndex{
+.cimsysIndex .sectionIndex{
     margin: 0;
     padding-top: 1px;
     box-sizing: border-box;
@@ -20,7 +20,7 @@
     font-size: 30px;
 }
 
-.warningMessage{
+.cimsysIndex .warningMessage{
     margin: 5px;
     padding: 5px;
     box-sizing: content-box;
@@ -31,16 +31,16 @@
     color: white; 
 }
 
-.signInLink{
+.cimsysIndex .signInLink{
     font-family: 'Barlow', sans-serif;
     text-decoration: blue;
     color: white;
 }
 
-.signInLink:hover{
+ .cimsysIndex .signInLink:hover{
     text-decoration:underline;
 } 
 
-nav ul li a{
+.cimsysIndex nav ul li a{
     color:black;
 }

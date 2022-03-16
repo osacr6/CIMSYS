@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+    <head th:replace="plantilla/template :: Head (pageTitle='Stage')">
+    </head>
+    <body>
+        <div th:replace="plantilla/template :: NavBar (module='inicio')"></div>
+
+        <div class="main-container">
+
+            <!-- MENU -->
+            <div class="container menu">
+                <nav>
+                    <ul class="menu-items">
+                        <li class="menu-item nav-img"><a href="/tiquete.html" class="menu-link">Pagina de tiquete</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- MOCK -->
+            <div class="container">
+                <div class="image-container--full">
+                    <div class="image-frame">
+                        <img class="image" src="./images/mocks/inicio.PNG" alt="alt"/>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <footer th:replace="plantilla/template :: Footer"></footer>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+    <head th:replace="plantilla/template :: Head (pageTitle='Login')">
+    </head>
+    <body>
+        <div class="main-container">
+            
+            <!-- CONTENIDOS -->
+            <div class="container">
+
+                <!-- comment contenido Aqui-->
+                <div class="loginForm">
+                    <h2 class="loginForm-title">CIMSYS</h2>
+                    <form th:object="${usuario}"
+                        th:action="@{/singIn}"
+                        method="POST">
+                        <div>
+                            <label class="form-label" for="username">Username</label>
+                            <input type="text" id="username" th:field="*{UserName}" class="form-control" required>
+                        </div>
+                        <div>
+                            <label class="form-label" for="password">Password </label>
+                            <input type="password" id="password" th:field="*{Password}" class="form-control" required>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </div>
+                        <div class="loginForm-links">
+                            <a href="/soporte">Forgot Passoword?</a>
+                            <a href="/faq">Terms & Conditions<a></a>
+                        </div><!-- comment -->
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+        
+        <footer th:replace="plantilla/template :: Footer"></footer>
+    </body>
+</html>

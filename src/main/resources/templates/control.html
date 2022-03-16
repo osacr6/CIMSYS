@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+    <head th:replace="plantilla/template :: Head (pageTitle='Management')">
+    </head>
+    <body>
+        <div th:replace="plantilla/template :: NavBar (module='control')"></div>
+        
+        <div class="main-container">
+
+            <!-- TITULOS -->
+            <div class="container">
+                <div class="page-title">
+                    <h1>Control</h1>
+                </div>
+            </div>  
+
+            <!-- MOCK -->
+            <div class="container">
+                <div class="image-container--full">
+                    <div class="image-frame">
+                        <img class="image" src="./images/mocks/kanban-board.png" alt="alt"/>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        
+        <footer th:replace="plantilla/template :: Footer"></footer>
+    </body>
+</html>

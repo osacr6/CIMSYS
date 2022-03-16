@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+    <head th:replace="plantilla/template :: Head (pageTitle='Support')">
+    </head>
+    <body>
+        <div th:replace="plantilla/template :: NavBar (module='soporte')"></div>
+        
+        <div class="main-container">
+            <!-- TITULOS -->
+            <div class="container">
+                <div class="page-title">
+                    <h1>Contact Our Support Team</h1>
+                </div>
+            </div>  
+
+            <!-- MOCK -->
+            <div class="container">
+                <div class="image-container--full">
+                    <div class="image-frame">
+                        <img class="image" src="./images/mocks/contact.jpg" alt="alt"/>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        
+        <footer th:replace="plantilla/template :: Footer"></footer>
+    </body>
+</html>
