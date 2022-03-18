@@ -5,6 +5,9 @@
 package com.CIMSYS.controller;
 
 import com.CIMSYS.entity.*;
+import com.CIMSYS.service.CasoService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RouteController {
+    @Autowired
+    private CasoService casoService;
+
     @GetMapping("/")
     public String index (){
         return "index";
@@ -25,7 +31,9 @@ public class RouteController {
     }
     
     @GetMapping("/inicio")
-    public String inicio (){
+    public String inicio (Model model){
+        List<Caso> listaCasos = casoService.getAll();
+        model.addAttribute("casos", listaCasos);
         return "inicio";
     }
     

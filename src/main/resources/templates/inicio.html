@@ -7,15 +7,6 @@
 
         <div class="main-container">
 
-            <!-- MENU -->
-            <div class="container menu">
-                <nav>
-                    <ul class="menu-items">
-                        <li class="menu-item nav-img"><a href="/tiquete.html" class="menu-link">Pagina de tiquete</a></li>
-                    </ul>
-                </nav>
-            </div>
-
             <!-- MOCK -->
             <div class="container">
                 <div class="image-container--full">
@@ -24,9 +15,25 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div class="container">
+                <table class="table">
+                    <th:block th:each="caso : ${casos}">
+                        <tr>
+                            <td>
+                                <a th:href="@{/caso/{id}(id=${caso.getId})}" th:text="${caso.getCodigo}"></a>
+                            </td>
+                            <td ></td>
+                            <td th:text="${caso.getTitulo}"></td>
+                            <td th:text="${caso.getDescripcion}"></td>
+                            <td th:text="${caso.getStatus}"></td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+
         </div>
-        
+
         <footer th:replace="plantilla/template :: Footer"></footer>
     </body>
 </html>

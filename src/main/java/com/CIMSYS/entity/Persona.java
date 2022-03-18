@@ -7,8 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import com.CIMSYS.entity.Usuario;
+import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table (name="persona")
@@ -21,6 +23,10 @@ public class Persona  implements Serializable{
     private String Cedula;
     private String Email;
     private String Telefono;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name="usuario_id") 
+    private Usuario usuario;
 
     public long getId() {
         return id;
@@ -68,5 +74,13 @@ public class Persona  implements Serializable{
 
     public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

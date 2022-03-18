@@ -9,11 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class PersonaService implements IPersonaService{
+    private Persona logged = null;
     
     @Autowired
     private PersonaRepository IPersonaRepository;
     @Autowired
     private UsuariosRepository IUsuariosRepository;
+    
+    
+    @Override
+    public List<Persona> getAll(){
+        return (List<Persona>)IPersonaRepository.findAll();
+    }
+    
+    @Override
+    public Persona getById(long id){
+        return IPersonaRepository.findById(id).orElse(null);
+    }
     
     @Override
     public void savePersona(Persona Persona){
@@ -33,17 +45,30 @@ public class PersonaService implements IPersonaService{
     @Override
     public Persona login(Usuario data) {
         Usuario loggedUser = null;
-        List<Usuario> Usuarios = (List<Usuario>)IUsuariosRepository.findAll();
-        for(Usuario u : Usuarios){
-            if( u.getUserName() == data.getUserName() && u.getPassword()== data.getPassword() ) {
-                loggedUser = u;
+        Persona loggedPersona= null;
+        List<Usuario> usuarios = (List<Usuario>)IUsuariosRepository.findAll();
+        List<Persona> personas = (List<Persona>)IPersonaRepository.findAll();
+
+        for(Usuario usuario : usuarios){
+            if( usuario.getUserName().equals(data.getUserName()) && usuario.getPassword().equals(data.getPassword()) ) {
+                loggedUser = usuario;
             }
         }
         
         if(loggedUser != null) {
-            return IPersonaRepository.findById(loggedUser.getPersona().getId()).orElse(null);
+            for(Persona persona : personas){
+                if( persona.getUsuario().getId() == loggedUser.getId()) {
+                    logged = persona;
+                    loggedPersona = persona;
+                }
+            }
+            return loggedPersona;
         }
-        
+
         return null;
+    }
+    
+    public Persona getLogged(){
+        return logged;
     }
 }

@@ -20,10 +20,6 @@ public class Usuario implements Serializable{
     private String UserName;
     private String Password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name="persona_id") 
-    private Persona persona;
-
     public long getId() {
         return id;
     }
@@ -46,16 +42,6 @@ public class Usuario implements Serializable{
 
     public void setPassword(String Password) {
         this.Password = Password;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-    
-    
+    } 
 }
 
