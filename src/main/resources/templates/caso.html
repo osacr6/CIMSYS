@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+    <head th:replace="plantilla/template :: Head (pageTitle='Caso')">
+    </head>
+    <body>
+        <div th:replace="plantilla/template :: NavBar (module='')"></div>
+
+        <div class="main-container">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-9">
+                        <div class="">
+                            <h5 th:text="${caso.getCodigo}">ID</h5>
+                            <p th:text="${caso.getTitulo}">Titulo</p>
+                        </div>
+
+                        <div  class="row mb-3">
+                            <div class="col-12">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-outline-primary">Edit</button>
+                                    <button type="button" class="btn btn-outline-primary">Resolve Issue</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <p>Details</p>
+                            <div class="col-6">
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <p>Type:</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>xxx</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <p>Status</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p th:text="${caso.getStatus}">Status</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <p>Resolution</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>xxx</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <p>Description</p>
+
+                            <div class="col-12">
+                                <textarea class="full" th:text="${caso.getDescripcion}">Description</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <p>Comments</p>
+
+                            <div class="col-12">
+                                <p>Comment 1</p>
+                            </div>
+                            <div class="col-12">
+                                <p>Comment 2</p>
+                            </div>
+
+                            <div class="col-12">
+                                <textarea class="full">
+                           mlznvjdkgmgfdfsgfngdgn
+                                </textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-primary">Comment</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- sideBar -->
+                    <div class="col-3">
+                        <p>People</p>
+                        <div class="col-12">
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Assginee</p>
+                                </div>
+                                <div class="col-6">
+                                    <a th:href="@{/persona/{id}(id=${caso.getCliente.getId})}" th:text="${caso.getCliente.getNombre}"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Dates</p>
+                        <div class="col-12">
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Created</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>xxx</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">                                
+                                <div class="col-6">
+                                    <p>Updated:</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>xxx</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer th:replace="plantilla/template :: Footer"></footer>
+    </body>
+</html>

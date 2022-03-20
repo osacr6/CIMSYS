@@ -7,25 +7,46 @@
 
         <div class="main-container">
 
-            <!-- MOCK -->
             <div class="container">
-                <div class="image-container--full">
-                    <div class="image-frame">
-                        <img class="image" src="./images/mocks/inicio.PNG" alt="alt"/>
-                    </div>
-                </div>
-            </div>
+                <h4>Assigned to me </h4>
 
-            <div class="container">
                 <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">key</th>
+                            <th scope="col">Summary</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
                     <th:block th:each="caso : ${casos}">
                         <tr>
                             <td>
                                 <a th:href="@{/caso/{id}(id=${caso.getId})}" th:text="${caso.getCodigo}"></a>
                             </td>
-                            <td ></td>
                             <td th:text="${caso.getTitulo}"></td>
-                            <td th:text="${caso.getDescripcion}"></td>
+                            <td th:text="${caso.getStatus}"></td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+
+            <div class="container">
+                <h4>Watched Issues</h4>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">key</th>
+                            <th scope="col">Summary</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <th:block th:each="caso : ${casos}">
+                        <tr>
+                            <td>
+                                <a th:href="@{/caso/{id}(id=${caso.getId})}" th:text="${caso.getCodigo}"></a>
+                            </td>
+                            <td th:text="${caso.getTitulo}"></td>
                             <td th:text="${caso.getStatus}"></td>
                         </tr>
                     </th:block>

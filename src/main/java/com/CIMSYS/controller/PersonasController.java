@@ -17,7 +17,7 @@ public class PersonasController {
     
     
     @PostMapping("/singIn")
-    public String singIn(@ModelAttribute Usuario usuario) {
+    public String singIn(Model model, @ModelAttribute Usuario usuario) {
         Persona logged = personaService.login(usuario);
         if(logged != null) {
             return "redirect:/inicio";

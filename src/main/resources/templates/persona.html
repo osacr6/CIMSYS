@@ -7,32 +7,70 @@
 
         <div class="main-container">
 
-            <!-- MOCK -->
             <div class="container">
-                <div class="image-container--full">
-                    <div class="image-frame">
-                        <img class="image" src="../images/mocks/persona.PNG" alt="alt"/>
+                <div class="row">
+                    <h5>Summary</h5>
+
+                    <div class="row mb-3">
+                        <p>Details</p>
+                        <div class="col-6">
+                            <div class="row mb-3">
+                                <div>Avatar</div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Full name</p>
+                                </div>
+                                <div class="col-6">
+                                    <p th:text="${persona.getNombre +' '+ persona.getApellidos}">Daniel Murillo</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>User Id</p>
+                                </div>
+                                <div class="col-6">
+                                    <p th:text="${persona.getCedula}">Cedula</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Email</p>
+                                </div>
+                                <div class="col-6">
+                                    <p th:text="${persona.getEmail}">mail@mail.com</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Phone</p>
+                                </div>
+                                <div class="col-6">
+                                    <p th:text="${persona.getTelefono}">Phone</p>
+                                </div>
+                            </div>
+                        </div>                       
                     </div>
                 </div>
+                <div class="row">
+                    <h5>Historial de comparas</h5>
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <p>compra 1</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <p>compra 2</p>
+                        </div>
+                    </div>
+                </div>
+
+
             </div> 
 
-
-            <div class="container">
-                <table class="table">
-                    <tr>
-                        <td th:text="${persona.getId}"></td>
-                        <td th:text="${persona.getCedula}"></td>
-                        <td th:text="${persona.getNombre}"></td>
-                        <td th:text="${persona.getApellidos}"></td>
-                        <td th:text="${persona.getEmail}"></td>
-                        <td th:text="${persona.getTelefono}"></td>
-                    </tr>
-                </table>
-            </div>
-
-
-        </div> 
-
-        <footer th:replace="plantilla/template :: Footer"></footer>
+            <footer th:replace="plantilla/template :: Footer"></footer>
     </body>
 </html>

@@ -4,16 +4,23 @@
     </head>
     <body>
         <div class="main-container">
-            
+
             <!-- CONTENIDOS -->
             <div class="container">
 
                 <!-- comment contenido Aqui-->
                 <div class="loginForm">
                     <h2 class="loginForm-title">CIMSYS</h2>
+                    
+                    <div th:classappend="${error == 'true' ? 'd-none' : 'd-block'}">
+                        <div class="alert alert-warning" role="alert">
+                            Enter a valid email Username and Password.
+                        </div>
+                    </div>
+
                     <form th:object="${usuario}"
-                        th:action="@{/singIn}"
-                        method="POST">
+                          th:action="@{/singIn}"
+                          method="POST">
                         <div>
                             <label class="form-label" for="username">Username</label>
                             <input type="text" id="username" th:field="*{UserName}" class="form-control" required>
@@ -31,10 +38,10 @@
                         </div><!-- comment -->
                     </form>
                 </div>
-                
+
             </div>
         </div>
-        
+
         <footer th:replace="plantilla/template :: Footer"></footer>
     </body>
 </html>

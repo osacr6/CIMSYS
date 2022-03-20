@@ -1,5 +1,5 @@
 # CIMSYS
-Sistema de gestión de casos de investigaciones de cumplimiento
+Sistema de gestión de casos de investigaciones en cumplimiento
 
 ## Proyecto es un Manejador de revisiones
 
@@ -22,4 +22,17 @@ Sistema de gestión de casos de investigaciones de cumplimiento
 
 #
 ## Ver En:
-http://localhost:8080/inicio.html
+http://localhost:8090
+
+## Configuracion de Mysql:
+```
+CREATE SCHEMA `cimsys` ;
+```
+
+```
+username=root
+password=admin
+```
+
+## thymeleaf Syntax
+https://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html
