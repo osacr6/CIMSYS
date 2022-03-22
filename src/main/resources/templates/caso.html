@@ -8,11 +8,23 @@
         <div class="main-container">
             <div class="container">
                 <div class="row">
-                    
+
+                    <form class="d-none guardarCaso"
+                          th:object="${caso}"
+                          th:action="@{/guardarCaso}"
+                          method="POST">
+                        <input type="hidden" th:field="*{id}" id="id">
+                        <input type="hidden" th:field="*{Codigo}" id="Codigo">
+                        <input type="hidden" th:field="*{Titulo}" id="Titulo">
+                        <input type="hidden" th:field="*{Descripcion}" id="Descripcion">
+                        <input type="hidden" th:field="*{resolucion}" id="resolucion">
+                        <input type="hidden" th:field="*{Status}" id="Status">
+                    </form>
+
                     <div class="col-9">
                         <div class="">
                             <h5 th:text="${caso.getCodigo}">ID</h5>
-                            <p th:text="${caso.getTitulo}">Titulo</p>
+                            <input type="text" th:value="${caso.getTitulo}" class="form-control mb-3">
                         </div>
 
                         <div  class="row mb-3">
@@ -42,7 +54,8 @@
                                         <p>Status</p>
                                     </div>
                                     <div class="col-6">
-                                        <p th:text="${caso.getStatus}">Status</p>
+                                        <input type="text" th:value="${caso.getStatus}" class="form-control">
+                                        <!--<p th:text="${caso.getStatus}">Status</p>-->
                                     </div>
                                 </div>
                                 <div class="row mb-3">

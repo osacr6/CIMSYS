@@ -6,7 +6,7 @@ import java.util.List;
 public interface IPersonaService {
     public List<Persona> getAll();
     public Persona getById(long id);
-    public void savePersona (Persona persona);
+    public Persona savePersona (Persona persona);
     public Persona getPersona (long id);
     public void deletePersona (long id);
     public Persona login(Usuario data);

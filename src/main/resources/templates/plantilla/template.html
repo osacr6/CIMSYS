@@ -12,18 +12,22 @@
     <body>
 
         <div class="container" th:fragment="NavBar (module)">
-            <header class="d-flex justify-content-center py-3">
+            <header class="d-flex justify-content-center py-3 mb-3 border-bottom">
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a href="/inicio" class="nav-link" th:classappend="${module == 'inicio' ? 'active' : ''}">Stage</a></li>
                     <li class="nav-item"><a href="/control" class="nav-link" th:classappend="${module == 'control' ? 'active' : ''}">Management</a></li>
                     <li class="nav-item"><a href="/soporte" class="nav-link" th:classappend="${module == 'soporte' ? 'active' : ''}">About</a></li>
                     <li class="nav-item"><a href="/faq" class="nav-link" th:classappend="${module == 'faq' ? 'active' : ''}">FAQs</a></li>
                 </ul>
+                <div class="col-md-3 text-end">
+                    <button type="button" class="btn btn-outline-primary me-2 d-none">Login</button>
+                    <a href="/login" class="btn btn-outline-primary">Sign-up</a>
+                </div>
             </header>
         </div>
 
         <footer th:fragment="Footer" class="fixed-bottom">
-            <p>© 2022 </p>
+            <p>© Daniel 2022 </p>
             <script src="../js/bootstrap.min.js"></script>
         </footer>
     </body>
