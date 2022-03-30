@@ -71,4 +71,8 @@ public class PersonaService implements IPersonaService{
     public Persona getLogged(){
         return logged;
     }
+    
+    public Usuario saveUsuario(Usuario data){
+        return IUsuariosRepository.save(data);
+    }
 }

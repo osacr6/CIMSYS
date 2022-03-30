@@ -43,7 +43,19 @@ public class PersonasController {
     
     @PostMapping("/guardarPersona")
     public String guardarPersona(@ModelAttribute Persona persona, @ModelAttribute Usuario usuario) {
-        Persona newPersona = personaService.savePersona(persona);
-        return "redirect:/inicio";
+        Persona newPersona = new Persona();
+        newPersona.setId(-1);
+        Usuario newUsuario = new Usuario();
+        newUsuario.setId(-1);
+        
+        if ( usuario.getId() > -1 ) {
+            newUsuario = personaService.saveUsuario(usuario);
+        }
+        if( persona.getId() > -1 ) {
+            newPersona = personaService.savePersona(persona);
+            return "redirect:/persona/" + newPersona.getId();
+        } else {
+            return "registro";
+        }
     }
 }

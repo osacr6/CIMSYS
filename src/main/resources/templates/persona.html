@@ -7,11 +7,23 @@
 
         <div class="main-container">
 
+            <form class="d-none"
+                  th:object="${persona}"
+                  th:action="@{/guardarPersona}"
+                  method="POST">
+                <input type="hidden" th:field="*{id}" id="id">
+                <input type="hidden" th:field="*{Nombre}" id="Nombre">
+                <input type="hidden" th:field="*{Apellidos}" id="Apellidos">
+                <input type="hidden" th:field="*{Cedula}" id="Cedula">
+                <input type="hidden" th:field="*{Email}" id="Email">
+                <input type="hidden" th:field="*{Telefono}" id="Telefono">
+            </form>
+
             <div class="container">
                 <div class="row">
                     <h5>Summary</h5>
 
-                    <div class="row mb-3">
+                    <div class="row mb-3 auto-save-inputs">
                         <p>Details</p>
                         <div class="col-6">
                             <div class="row mb-3">
@@ -21,8 +33,8 @@
                                 <div class="col-6">
                                     <p>Full name</p>
                                 </div>
-                                <div class="col-6">
-                                    <p th:text="${persona.getNombre +' '+ persona.getApellidos}">Daniel Murillo</p>
+                                <div class="col-6">   
+                                    <input type="text" th:value="${persona.getNombre +' '+ persona.getApellidos}" class="form-control mb-3 authorable" target="Nombre">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -30,7 +42,7 @@
                                     <p>User Id</p>
                                 </div>
                                 <div class="col-6">
-                                    <p th:text="${persona.getCedula}">Cedula</p>
+                                    <input type="text" th:value="${persona.getCedula}" class="form-control mb-3 authorable" target="Cedula">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -38,7 +50,7 @@
                                     <p>Email</p>
                                 </div>
                                 <div class="col-6">
-                                    <p th:text="${persona.getEmail}">mail@mail.com</p>
+                                    <input type="text" th:value="${persona.getEmail}" class="form-control mb-3 authorable" target="Email">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -46,7 +58,7 @@
                                     <p>Phone</p>
                                 </div>
                                 <div class="col-6">
-                                    <p th:text="${persona.getTelefono}">Phone</p>
+                                    <input type="text" th:value="${persona.getTelefono}" class="form-control mb-3 authorable" target="Telefono">
                                 </div>
                             </div>
                         </div>                       

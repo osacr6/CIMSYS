@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row">
 
-                    <form class="d-none guardarCaso"
+                    <form class="d-none"
                           th:object="${caso}"
                           th:action="@{/guardarCaso}"
                           method="POST">
@@ -21,10 +21,10 @@
                         <input type="hidden" th:field="*{Status}" id="Status">
                     </form>
 
-                    <div class="col-9">
+                    <div class="col-9 auto-save-inputs">
                         <div class="">
                             <h5 th:text="${caso.getCodigo}">ID</h5>
-                            <input type="text" th:value="${caso.getTitulo}" class="form-control mb-3">
+                            <input type="text" th:value="${caso.getTitulo}" class="form-control mb-3 authorable" target="Titulo">
                         </div>
 
                         <div  class="row mb-3">
@@ -44,7 +44,9 @@
                                         <p>Type:</p>
                                     </div>
                                     <div class="col-6">
-                                        <p>xxx</p>
+                                        <select class="form-control">
+                                            <option selected>Issue</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -54,8 +56,9 @@
                                         <p>Status</p>
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" th:value="${caso.getStatus}" class="form-control">
-                                        <!--<p th:text="${caso.getStatus}">Status</p>-->
+                                        <select class="form-control">
+                                            <option th:value="${caso.getStatus}" selected>OPEN</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -88,9 +91,7 @@
                             </div>
 
                             <div class="col-12">
-                                <textarea class="full">
-                           mlznvjdkgmgfdfsgfngdgn
-                                </textarea>
+                                <textarea class="full">needs to be reviewed</textarea>
                             </div>
                             <div class="col-12">
                                 <button type="button" class="btn btn-outline-primary">Comment</button>

@@ -1,0 +1,6 @@
+(function(){
+    window.cimsys = {
+        utils: {
+        },
+    };
+})();
