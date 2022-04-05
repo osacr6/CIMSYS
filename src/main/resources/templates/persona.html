@@ -31,10 +31,18 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <p>Full name</p>
+                                    <p>Nombre</p>
                                 </div>
                                 <div class="col-6">   
-                                    <input type="text" th:value="${persona.getNombre +' '+ persona.getApellidos}" class="form-control mb-3 authorable" target="Nombre">
+                                    <input type="text" th:value="${persona.getNombre}" class="form-control mb-3 authorable" target="Nombre">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Apellido</p>
+                                </div>
+                                <div class="col-6">   
+                                    <input type="text" th:value="${persona.getApellidos}" class="form-control mb-3 authorable" target="Apellidos">
                                 </div>
                             </div>
                             <div class="row mb-3">

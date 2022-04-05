@@ -1,5 +1,12 @@
+/* Primero crear la BD */
+
 CREATE SCHEMA `cimsys` ;
 
+/* Ir a la netbeans y hacer clean & build project */
+/* Revisar que las tablas sean creadas */
+
+
+/* Agregar datos de pruebas */
 INSERT INTO `cimsys`.`rol`
 (`rol_name`)VALUES("ADMIN");
 
@@ -16,3 +23,4 @@ INSERT INTO `cimsys`.`caso`
 (`codigo`,`persona_id`,`titulo`,`descripcion`,`status`)VALUES("codigo-002","1","Compra 002","revision de Compra 002","OPEN");
 INSERT INTO `cimsys`.`caso`
 (`codigo`,`persona_id`,`titulo`,`descripcion`,`status`)VALUES("codigo-003","1","Compra 003","revision de Compra 003","OPEN");
+
