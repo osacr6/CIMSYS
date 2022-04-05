@@ -1,5 +1,5 @@
 (function(){
-    const autoSaveInputs = document.querySelectorAll('.auto-save-inputs input');
+    const autoSaveInputs = document.querySelectorAll('input.authorable');
     
     for (var i = 0; i < autoSaveInputs.length ; i++) {
         autoSaveInputs[i].addEventListener('change', (event) => {

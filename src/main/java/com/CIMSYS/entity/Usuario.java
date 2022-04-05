@@ -19,6 +19,9 @@ public class Usuario implements Serializable{
     private long id;
     private String UserName;
     private String Password;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name="rol_id") 
+    private Usuario Rol;
 
     public long getId() {
         return id;
@@ -43,5 +46,13 @@ public class Usuario implements Serializable{
     public void setPassword(String Password) {
         this.Password = Password;
     } 
+
+    public Usuario getRol() {
+        return Rol;
+    }
+
+    public void setRol(Usuario Rol) {
+        this.Rol = Rol;
+    }
 }
 

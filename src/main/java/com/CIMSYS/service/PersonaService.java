@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class PersonaService implements IPersonaService{
-    private Persona logged = null;
-    
     @Autowired
     private PersonaRepository IPersonaRepository;
     @Autowired
@@ -58,7 +56,6 @@ public class PersonaService implements IPersonaService{
         if(loggedUser != null) {
             for(Persona persona : personas){
                 if( persona.getUsuario().getId() == loggedUser.getId()) {
-                    logged = persona;
                     loggedPersona = persona;
                 }
             }
@@ -66,10 +63,6 @@ public class PersonaService implements IPersonaService{
         }
 
         return null;
-    }
-    
-    public Persona getLogged(){
-        return logged;
     }
     
     public Usuario saveUsuario(Usuario data){

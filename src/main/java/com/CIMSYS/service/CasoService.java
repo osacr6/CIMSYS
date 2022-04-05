@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class CasoService implements ICasoService{
+public class CasoService implements ICasoService {
     @Autowired
     private CasosRepository ICasoRepository;
     @Autowired
     private UsuariosRepository IUsuariosRepository;
+    @Autowired
+    private ComentariosRepository IComentariosRepository;
     
     @Override
     public List<Caso> getAll() {
@@ -37,5 +39,10 @@ public class CasoService implements ICasoService{
     @Override
     public void deleteCaso (long id){
         ICasoRepository.deleteById(id);
+    }
+    
+    @Override
+    public List<Comentario> getComentarios(long casoId){
+        return (List<Comentario>)IComentariosRepository.findAll();
     }
 }

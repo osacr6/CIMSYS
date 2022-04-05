@@ -20,7 +20,8 @@ public class CasosController {
     public String Caso(Model model, @PathVariable("id") Long idCaso) {
         Caso caso = casoService.getById(idCaso);
         model.addAttribute("caso", caso);
+        List<Comentario> comentario = casoService.getComentarios(idCaso);
+        model.addAttribute("comentario", comentario);
         return "caso";
     }
-
 }

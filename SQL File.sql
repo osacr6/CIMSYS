@@ -1,9 +1,10 @@
 CREATE SCHEMA `cimsys` ;
 
+INSERT INTO `cimsys`.`rol`
+(`rol_name`)VALUES("ADMIN");
 
 INSERT INTO `cimsys`.`usuario`
-(`user_name`, `password`)VALUES('admin',"123");
-
+(`user_name`, `password`, `rol_id`)VALUES("admin","123", "1");
 
 INSERT INTO `cimsys`.`persona`
 (`nombre`,`apellidos`,`cedula`,`email`,`telefono`,`usuario_id`)VALUES("Daniel","Murillo","C00","@","tel",1);
