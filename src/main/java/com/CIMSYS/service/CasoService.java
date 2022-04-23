@@ -45,4 +45,19 @@ public class CasoService implements ICasoService {
     public List<Comentario> getComentarios(long casoId){
         return (List<Comentario>)IComentariosRepository.findAll();
     }
+    
+    @Override
+    public void saveComentario(Comentario comentario){
+        IComentariosRepository.save(comentario);
+    }
+    
+    @Override
+    public Comentario getComentario(long id){
+        return IComentariosRepository.findById(id).orElse(null);
+    }
+    
+    @Override
+    public void deleteComentario (Comentario comentario){
+        IComentariosRepository.delete(comentario);
+    }
 }

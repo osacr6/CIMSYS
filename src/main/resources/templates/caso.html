@@ -21,6 +21,15 @@
                         <input type="hidden" th:field="*{Status}" id="Status">
                     </form>
 
+                    <form class="d-none"
+                          th:object="${nuevoComentario}"
+                          th:action="@{/guardarComentario}"
+                          method="POST">
+                        <input type="hidden" th:field="*{caso}" id="caso">
+                        <input type="hidden" th:field="*{usuario}" id="usuario">
+                        <input type="hidden" th:field="*{Comentario}" id="Comentario">
+                    </form>
+
                     <div class="col-9 auto-save-inputs">
                         <div class="">
                             <h5 th:text="${caso.getCodigo}">ID</h5>
@@ -28,11 +37,11 @@
                         </div>
 
                         <div class="row mb-3">
-                            <p>Details</p>
+                            <p>Detalles</p>
                             <div class="col-6">
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <p>Type:</p>
+                                        <p>Tipo:</p>
                                     </div>
                                     <div class="col-6">
                                         <select class="form-control">
@@ -44,20 +53,26 @@
                             <div class="col-6">
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <p>Status</p>
+                                        <p>Status:</p>
                                     </div>
                                     <div class="col-6">
-                                        <select class="form-control">
-                                            <option th:value="${caso.getStatus}" selected>OPEN</option>
+                                        <select class="form-control" val>
+                                            <option th:value="${caso.getStatus}">Abierto</option>
+                                            <option th:value="${caso.getStatus}">En Progreso</option>
+                                            <option th:value="${caso.getStatus}">Cerrado</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <p>Resolution</p>
+                                        <p>Resolución:</p>
                                     </div>
                                     <div class="col-6">
-                                        <p>xxx</p>
+                                        <select class="form-control">
+                                            <option selected>Pendiente</option>
+                                            <option>Aceptada</option>
+                                            <option>Rechazada</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -67,39 +82,49 @@
                             <p>Description</p>
 
                             <div class="col-12">
-                                <textarea class="full" th:text="${caso.getDescripcion}">Description</textarea>
+                                <textarea class="full shadow-lg" th:text="${caso.getDescripcion}">Description</textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <p>Comments</p>
+                            <p>Comentarios</p>
+
+                            <th:block th:each="comentario : ${comentarios}">
+                                <div class="col-12">
+                                    <div class="shadow-lg p-3 mb-3 bg-body rounded">
+                                        <p th:text="${comentario.getComentario}">Comment</p>
+                                        <a th:href="@{/eliminarComentario/{id}(id=${comentario.getId})}">Eliminar</a>
+                                    </div>
+                                </div>
+                            </th:block>
 
                             <div class="col-12">
-                                <p>Comment 1</p>
+                                <textarea class="full comment-case"></textarea>
                             </div>
                             <div class="col-12">
-                                <p>Comment 2</p>
-                            </div>
-
-                            <div class="col-12">
-                                <textarea class="full">needs to be reviewed</textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-outline-primary">Comment</button>
+                                <button type="button" class="btn btn-outline-primary comment-case" target="Comentario">Comentar</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- sideBar -->
                     <div class="col-3">
-                        <p>People</p>
+                        <p>Persona</p>
                         <div class="col-12">
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <p>Assginee</p>
+                                    <p>Cliente:</p>
                                 </div>
                                 <div class="col-6">
                                     <a th:href="@{/persona/{id}(id=${caso.getCliente.getId})}" th:text="${caso.getCliente.getNombre}"></a>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <p>Analista:</p>
+                                </div>
+                                <div class="col-6">
+                                    <a th:href="@{/persona/{id}(id=${caso.getAsignado.getId})}" th:text="${caso.getAsignado.getUserName}"></a>
                                 </div>
                             </div>
                         </div>
@@ -108,18 +133,18 @@
                         <div class="col-12">
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <p>Created</p>
+                                    <p>Creada:</p>
                                 </div>
                                 <div class="col-6">
-                                    <p>xxx</p>
+                                    <p>20/04/2022</p>
                                 </div>
                             </div>
                             <div class="row mb-3">                                
                                 <div class="col-6">
-                                    <p>Updated:</p>
+                                    <p>Actualizada:</p>
                                 </div>
                                 <div class="col-6">
-                                    <p>xxx</p>
+                                    <p>22/04/2022</p>
                                 </div>
                             </div>
                         </div>

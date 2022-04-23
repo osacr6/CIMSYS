@@ -10,4 +10,7 @@ public interface ICasoService {
     public Caso getCaso (long id);
     public void deleteCaso (long id);
     public List<Comentario> getComentarios(long casoId);
+    public void saveComentario(Comentario comentario);
+    public Comentario getComentario(long id);
+    public void deleteComentario (Comentario comentario);
 }
