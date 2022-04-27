@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class PersonaService implements IPersonaService{
     @Autowired
     private PersonaRepository IPersonaRepository;
-    @Autowired
-    private UsuariosRepository IUsuariosRepository;
     
     
     @Override
@@ -41,31 +39,29 @@ public class PersonaService implements IPersonaService{
     }
 
     @Override
-    public Persona login(Usuario data) {
-        Usuario loggedUser = null;
-        Persona loggedPersona= null;
-        List<Usuario> usuarios = (List<Usuario>)IUsuariosRepository.findAll();
+    public Persona login(Persona data) {
+        Persona loggedUser= null;
         List<Persona> personas = (List<Persona>)IPersonaRepository.findAll();
 
-        for(Usuario usuario : usuarios){
-            if( usuario.getUserName().equals(data.getUserName()) && usuario.getPassword().equals(data.getPassword()) ) {
+        for(Persona usuario : personas){
+            if( 
+                usuario.getUserName()  != null &&
+                usuario.getPassword()  != null &&
+                usuario.getUserName().equals(data.getUserName()) &&
+                usuario.getPassword().equals(data.getPassword()) 
+            ) {
                 loggedUser = usuario;
             }
         }
         
         if(loggedUser != null) {
-            for(Persona persona : personas){
-                if( persona.getUsuario().getId() == loggedUser.getId()) {
-                    loggedPersona = persona;
-                }
-            }
-            return loggedPersona;
+            return loggedUser;
         }
 
         return null;
     }
     
-    public Usuario saveUsuario(Usuario data){
-        return IUsuariosRepository.save(data);
+    public Persona saveUsuario(Persona data){
+        return IPersonaRepository.save(data);
     }
 }

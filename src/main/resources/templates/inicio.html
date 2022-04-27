@@ -8,37 +8,14 @@
         <div class="main-container">
 
             <div class="container shadow-lg">
-                <h4 class="p-3">Assigned to me </h4>
+                <h4 class="p-3">[[#{aplicacion.asignado}]]</h4>
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">key</th>
-                            <th scope="col">Summary</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <th:block th:each="caso : ${casos}">
-                        <tr>
-                            <td>
-                                <a th:href="@{/caso/{id}(id=${caso.getId})}" th:text="${caso.getCodigo}"></a>
-                            </td>
-                            <td th:text="${caso.getTitulo}"></td>
-                            <td th:text="${caso.getStatus}"></td>
-                        </tr>
-                    </th:block>
-                </table>
-            </div>
-
-            <div class="container shadow-lg">
-                <h4 class="p-3">Watched Issues</h4>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">key</th>
-                            <th scope="col">Summary</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">[[#{aplicacion.key}]]</th>
+                            <th scope="col">[[#{aplicacion.description}]]</th>
+                            <th scope="col">[[#{aplicacion.status}]]</th>
                         </tr>
                     </thead>
                     <th:block th:each="caso : ${casos}">

@@ -15,20 +15,20 @@
         <div class="container" th:fragment="NavBar (module)">
             <header class="d-flex justify-content-center py-3 mb-3 border-bottom">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="/inicio" class="nav-link" th:classappend="${module == 'inicio' ? 'active' : ''}">Stage</a></li>
-                    <li class="nav-item"><a href="/control" class="nav-link" th:classappend="${module == 'control' ? 'active' : ''}">Management</a></li>
-                    <li class="nav-item"><a href="/soporte" class="nav-link" th:classappend="${module == 'soporte' ? 'active' : ''}">About</a></li>
-                    <li class="nav-item"><a href="/faq" class="nav-link" th:classappend="${module == 'faq' ? 'active' : ''}">FAQs</a></li>
+                    <li class="nav-item"><a href="/inicio" class="nav-link" th:classappend="${module == 'inicio' ? 'active' : ''}">[[#{aplicacion.stage}]]Stage</a></li>
+                    <li class="nav-item"><a href="/control" class="nav-link" th:classappend="${module == 'control' ? 'active' : ''}">[[#{aplicacion.management}]]</a></li>
+                    <li class="nav-item"><a href="/soporte" class="nav-link" th:classappend="${module == 'soporte' ? 'active' : ''}">[[#{aplicacion.about}]]</a></li>
+                    <li class="nav-item"><a href="/faq" class="nav-link" th:classappend="${module == 'faq' ? 'active' : ''}">[[#{aplicacion.faqs}]]</a></li>
                 </ul>
                 <div class="col-md-3 text-end">
-                    <button type="button" class="btn btn-outline-primary me-2 d-none">Login</button>
-                    <a href="/login" class="btn btn-outline-primary">Sign-up</a>
+                    <button type="button" class="btn btn-outline-primary me-2 d-none">[[#{aplicacion.login}]]</button>
+                    <a href="/login" class="btn btn-outline-primary">[[#{aplicacion.signup}]]</a>
                 </div>
             </header>
         </div>
 
         <footer th:fragment="Footer">
-            <p>© Daniel 2022</p>
+            <p>[[#{aplicacion.footer}]]</p>
             <script src="../js/bootstrap.min.js"></script>
             <script src="../js/scripts.js"></script>
             <script src="../js/events.js"></script>

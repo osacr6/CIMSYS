@@ -4,7 +4,7 @@ import com.CIMSYS.entity.*;
 import java.util.List;
 
 public interface ICasoService {
-    public List<Caso> getAll();
+    public List<Caso> getAll(String userId);
     public Caso getById (long id);
     public void saveCaso (Caso caso);
     public Caso getCaso (long id);

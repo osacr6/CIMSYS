@@ -17,8 +17,12 @@
                         <input type="hidden" th:field="*{Codigo}" id="Codigo">
                         <input type="hidden" th:field="*{Titulo}" id="Titulo">
                         <input type="hidden" th:field="*{Descripcion}" id="Descripcion">
+                        <input type="hidden" th:field="*{fecha_inicio}" id="fecha_inicio">
+                        <input type="hidden" th:field="*{fecha_resolucion}" id="fecha_resolucion">
                         <input type="hidden" th:field="*{resolucion}" id="resolucion">
                         <input type="hidden" th:field="*{Status}" id="Status">
+                        <input type="hidden" th:field="*{Asignado}" id="Asignado">
+                        <input type="hidden" th:field="*{cliente}" id="cliente">
                     </form>
 
                     <form class="d-none"
@@ -32,20 +36,22 @@
 
                     <div class="col-9 auto-save-inputs">
                         <div class="">
-                            <h5 th:text="${caso.getCodigo}">ID</h5>
+                            <h5 th:text="${caso.getCodigo}">[[#{aplicacion.id}]]</h5>
                             <input type="text" th:value="${caso.getTitulo}" class="form-control mb-3 authorable" target="Titulo">
                         </div>
 
                         <div class="row mb-3">
-                            <p>Detalles</p>
+                            <p>[[#{aplicacion.detalles}]]</p>
                             <div class="col-6">
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <p>Tipo:</p>
+                                        <p>[[#{aplicacion.status}]]:</p>
                                     </div>
                                     <div class="col-6">
-                                        <select class="form-control">
-                                            <option selected>Issue</option>
+                                        <select class="form-control authorable" target="Status">
+                                            <option value="0" th:selected="${caso.getStatus == '0'}">[[#{aplicacion.abierto}]]</option>
+                                            <option value="1" th:selected="${caso.getStatus == '1'}">[[#{aplicacion.progreso}]]</option>
+                                            <option value="2" th:selected="${caso.getStatus == '2'}">[[#{aplicacion.cerrado}]]</option>
                                         </select>
                                     </div>
                                 </div>
@@ -53,25 +59,13 @@
                             <div class="col-6">
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <p>Status:</p>
+                                        <p>[[#{aplicacion.resolucion}]]:</p>
                                     </div>
                                     <div class="col-6">
-                                        <select class="form-control" val>
-                                            <option th:value="${caso.getStatus}">Abierto</option>
-                                            <option th:value="${caso.getStatus}">En Progreso</option>
-                                            <option th:value="${caso.getStatus}">Cerrado</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-6">
-                                        <p>Resolución:</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <select class="form-control">
-                                            <option selected>Pendiente</option>
-                                            <option>Aceptada</option>
-                                            <option>Rechazada</option>
+                                        <select class="form-control authorable" target="resolucion">
+                                            <option value="0" th:selected="${caso.getResolucion == '0'}">[[#{aplicacion.pendiente}]]</option>
+                                            <option value="1" th:selected="${caso.getResolucion == '1'}">[[#{aplicacion.aceptada}]]</option>
+                                            <option value="2" th:selected="${caso.getResolucion == '2'}">[[#{aplicacion.rechazada}]]</option>
                                         </select>
                                     </div>
                                 </div>
@@ -79,21 +73,21 @@
                         </div>
 
                         <div class="row mb-3">
-                            <p>Description</p>
+                            <p>[[#{aplicacion.description}]]</p>
 
                             <div class="col-12">
-                                <textarea class="full shadow-lg" th:text="${caso.getDescripcion}">Description</textarea>
+                                <textarea class="full shadow-lg authorable" th:text="${caso.getDescripcion}" target="Descripcion">Description</textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <p>Comentarios</p>
+                            <p>[[#{aplicacion.comentarios}]]</p>
 
                             <th:block th:each="comentario : ${comentarios}">
                                 <div class="col-12">
                                     <div class="shadow-lg p-3 mb-3 bg-body rounded">
                                         <p th:text="${comentario.getComentario}">Comment</p>
-                                        <a th:href="@{/eliminarComentario/{id}(id=${comentario.getId})}">Eliminar</a>
+                                        <a th:href="@{/eliminarComentario/{id}(id=${comentario.getId})}">[[#{aplicacion.eliminar}]]</a>
                                     </div>
                                 </div>
                             </th:block>
@@ -102,7 +96,7 @@
                                 <textarea class="full comment-case"></textarea>
                             </div>
                             <div class="col-12">
-                                <button type="button" class="btn btn-outline-primary comment-case" target="Comentario">Comentar</button>
+                                <button type="button" class="btn btn-outline-primary comment-case" target="Comentario">[[#{aplicacion.comentar}]]</button>
                             </div>
                         </div>
                     </div>
@@ -113,10 +107,14 @@
                         <div class="col-12">
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <p>Cliente:</p>
+                                    <p>[[#{aplicacion.cliente}]]: </p>
                                 </div>
                                 <div class="col-6">
-                                    <a th:href="@{/persona/{id}(id=${caso.getCliente.getId})}" th:text="${caso.getCliente.getNombre}"></a>
+                                    <span>
+                                        <a th:href="@{/persona/{id}(id=${caso.getCliente.getId})}" th:text="${caso.getCliente.getNombre}"></a>
+                                        <i class="fa-solid fa-pen-to-square me-2 mt-1 icon-click" target="cliente"></i>
+                                    </span>
+                                    <input type="text" th:value="${caso.getCliente.getId}" class="form-control mb-3 authorable d-none" target="cliente">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -124,7 +122,12 @@
                                     <p>Analista:</p>
                                 </div>
                                 <div class="col-6">
-                                    <a th:href="@{/persona/{id}(id=${caso.getAsignado.getId})}" th:text="${caso.getAsignado.getUserName}"></a>
+                                    <span>
+                                        <a th:href="@{/persona/{id}(id=${caso.getAsignado.getId})}" th:text="${caso.getAsignado.getNombre}"></a>
+                                        <i class="fa-solid fa-pen-to-square me-2 mt-1 icon-click" target='Asignado'></i>
+                                        <i class="fa-solid fa-network-wired icon-click-asignarme" target='Asignado'></i>
+                                    </span>
+                                    <input type="text" th:value="${caso.getAsignado.getId}" class="form-control mb-3 authorable d-none" target="Asignado">
                                 </div>
                             </div>
                         </div>

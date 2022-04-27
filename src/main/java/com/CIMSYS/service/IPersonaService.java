@@ -9,6 +9,5 @@ public interface IPersonaService {
     public Persona savePersona (Persona persona);
     public Persona getPersona (long id);
     public void deletePersona (long id);
-    public Persona login(Usuario data);
-    public Usuario saveUsuario(Usuario data);
+    public Persona login(Persona data);
 }

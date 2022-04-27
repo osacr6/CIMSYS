@@ -1,16 +1,20 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * https://www.objectdb.com/api/java/jpa/annotations
  */
 package com.CIMSYS.entity;
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,11 +25,12 @@ public class Comentario implements Serializable{
     @GeneratedValue (strategy=GenerationType.IDENTITY)
     private long id;
     private String Comentario;
+    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private String Fecha;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name="usuario_id") 
-    private Usuario usuario;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.DETACH)
+    @JoinColumn (name="persona_id") 
+    private Persona usuario;
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.DETACH)
     @JoinColumn (name="caso_id") 
     private Caso caso;
 
@@ -53,11 +58,11 @@ public class Comentario implements Serializable{
         this.Fecha = Fecha;
     }
 
-    public Usuario getUsuario() {
+    public Persona getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Persona usuario) {
         this.usuario = usuario;
     }
 

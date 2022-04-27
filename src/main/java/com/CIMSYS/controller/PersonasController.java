@@ -3,6 +3,8 @@ package com.CIMSYS.controller;
 import com.CIMSYS.entity.*;
 import com.CIMSYS.service.*;
 import java.util.List;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +20,12 @@ public class PersonasController {
     
     
     @PostMapping("/singIn")
-    public String singIn(Model model, @ModelAttribute Usuario usuario) {
+    public String singIn(HttpServletResponse response, @ModelAttribute Persona usuario) {
         Persona logged = personaService.login(usuario);
         if(logged != null) {
+            String s = String.valueOf(logged.getId());
+            Cookie cookie = new Cookie("user", s);
+            response.addCookie(cookie);
             return "redirect:/inicio";
         } else {
             return "redirect:/login";
@@ -37,23 +42,17 @@ public class PersonasController {
     @GetMapping("/registro")
     public String crearPersona(Model model) {
         model.addAttribute("persona", new Persona());
-        model.addAttribute("usuario", new Usuario());
         return "registro";
     }
     
     @PostMapping("/guardarPersona")
-    public String guardarPersona(@ModelAttribute Persona persona, @ModelAttribute Usuario usuario) {
-        Persona newPersona = new Persona();
-        newPersona.setId(-1);
-        Usuario newUsuario = new Usuario();
-        newUsuario.setId(-1);
-        
-        if ( usuario.getId() > -1 ) {
-            newUsuario = personaService.saveUsuario(usuario);
-        }
+    public String guardarPersona(HttpServletResponse response, @ModelAttribute Persona persona) {
         if( persona.getId() > -1 ) {
-            newPersona = personaService.savePersona(persona);
-            return "redirect:/persona/" + newPersona.getId();
+            Persona newUsuario = personaService.savePersona(persona);
+            String s = String.valueOf(newUsuario.getId());
+            Cookie cookie = new Cookie("user", s);
+            response.addCookie(cookie);
+            return "redirect:/persona/" + newUsuario.getId();
         } else {
             return "registro";
         }

@@ -2,11 +2,13 @@ package com.CIMSYS.entity;
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,15 +22,19 @@ public class Caso implements Serializable{
     private String Codigo;
     private String Titulo;
     private String Descripcion;
+    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private String fecha_inicio;
+    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private String fecha_resolucion;
+    @Column(columnDefinition = "varchar(255) default '0'")
     private String resolucion;
+    @Column(columnDefinition = "varchar(255) default '0'")
     private String Status;
-    @ManyToOne
-    @JoinColumn (name="usuario_id") 
-    private Usuario Asignado;
-    @ManyToOne
-    @JoinColumn (name="persona_id") 
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.DETACH)
+    @JoinColumn (name="asignado_id") 
+    private Persona Asignado;
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.DETACH)
+    @JoinColumn (name="cliente_id") 
     private Persona cliente;
 
     public long getId() {
@@ -95,11 +101,11 @@ public class Caso implements Serializable{
         this.Status = Status;
     }   
 
-    public Usuario getAsignado() {
+    public Persona getAsignado() {
         return Asignado;
     }
 
-    public void setAsignado(Usuario Asignado) {
+    public void setAsignado(Persona Asignado) {
         this.Asignado = Asignado;
     }
 

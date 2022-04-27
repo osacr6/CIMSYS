@@ -42,7 +42,7 @@
                                     <p>Apellido</p>
                                 </div>
                                 <div class="col-6">   
-                                    <input type="text" th:value="${persona.getApellidos}" class="form-control mb-3 authorable" target="Apellidos">
+                                    <input type="text" th:if="${#bools.isTrue(persona.getApellidos)}" th:value="${persona.getApellidos}" class="form-control mb-3 authorable" target="Apellidos">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -72,22 +72,6 @@
                         </div>                       
                     </div>
                 </div>
-                <div class="row">
-                    <h5>Historial de comparas</h5>
-
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <p>compra 1</p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <p>compra 2</p>
-                        </div>
-                    </div>
-                </div>
-
 
             </div> 
 

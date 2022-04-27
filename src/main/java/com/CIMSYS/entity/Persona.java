@@ -6,8 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import com.CIMSYS.entity.Usuario;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -23,10 +23,11 @@ public class Persona  implements Serializable{
     private String Cedula;
     private String Email;
     private String Telefono;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name="usuario_id") 
-    private Usuario usuario;
+    private String UserName;
+    private String Password;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name="rol_id") 
+    private Rol rol;
 
     public long getId() {
         return id;
@@ -76,11 +77,29 @@ public class Persona  implements Serializable{
         this.Telefono = Telefono;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getUserName() {
+        return UserName;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }   
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+    
+    
 }
