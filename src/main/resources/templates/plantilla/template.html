@@ -15,7 +15,7 @@
         <div class="container" th:fragment="NavBar (module)">
             <header class="d-flex justify-content-center py-3 mb-3 border-bottom">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="/inicio" class="nav-link" th:classappend="${module == 'inicio' ? 'active' : ''}">[[#{aplicacion.stage}]]Stage</a></li>
+                    <li class="nav-item"><a href="/inicio" class="nav-link" th:classappend="${module == 'inicio' ? 'active' : ''}">[[#{aplicacion.stage}]]</a></li>
                     <li class="nav-item"><a href="/control" class="nav-link" th:classappend="${module == 'control' ? 'active' : ''}">[[#{aplicacion.management}]]</a></li>
                     <li class="nav-item"><a href="/soporte" class="nav-link" th:classappend="${module == 'soporte' ? 'active' : ''}">[[#{aplicacion.about}]]</a></li>
                     <li class="nav-item"><a href="/faq" class="nav-link" th:classappend="${module == 'faq' ? 'active' : ''}">[[#{aplicacion.faqs}]]</a></li>
