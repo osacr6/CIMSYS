@@ -17,7 +17,7 @@
                     <div class="col-4">
                         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                             <p class="d-flex align-items-center flex-shrink-0 p-3 text-decoration-none border-bottom">
-                                <span class="fs-5 fw-semibold">Abierto</span>
+                                <span class="fs-5 fw-semibold">[[#{aplicacion.abierto}]]</span>
                             </p>
                             <div class="list-group list-group-flush border-bottom scrollarea">
                                 <th:block th:each="caso : ${casos}">
@@ -36,7 +36,7 @@
                     <div class="col-4">
                         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                             <p class="d-flex align-items-center flex-shrink-0 p-3 text-decoration-none border-bottom">
-                                <span class="fs-5 fw-semibold">En Progreso</span>
+                                <span class="fs-5 fw-semibold">[[#{aplicacion.progreso}]]</span>
                             </p>
                             <div class="list-group list-group-flush border-bottom scrollarea">
                                 <th:block th:each="caso : ${casos}">
@@ -55,7 +55,7 @@
                     <div class="col-4">
                         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                             <p class="d-flex align-items-center flex-shrink-0 p-3 text-decoration-none border-bottom">
-                                <span class="fs-5 fw-semibold">Cerrado</span>
+                                <span class="fs-5 fw-semibold">[[#{aplicacion.cerrado}]]</span>
                             </p>
                             <div class="list-group list-group-flush border-bottom scrollarea">
                                 <th:block th:each="caso : ${casos}">
